@@ -1,0 +1,9 @@
+{
+    "require": {
+        "codeigniter/framework": "^3.0"
+    },
+    "config": {
+    		"vendor-dir": "frameworks"
+    }
+
+}
