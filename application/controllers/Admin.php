@@ -52,7 +52,7 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/dashboard/dashboard',$data);
 	}
 
-	function randomize_widgets() {
+	public function randomize_widgets() {
 		$widgets = array(
 				'social_developer.php',
 				'social_sales.php',

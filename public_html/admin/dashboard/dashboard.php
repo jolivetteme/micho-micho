@@ -319,6 +319,7 @@ desired effect
                 include $social_widgets.$profile['files'];
              }
           }
+          
         ?>
         </div>  
         <!-- /.social-profile-widgets -->

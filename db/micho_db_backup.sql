@@ -16,6 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `positions`
+--
+
+DROP TABLE IF EXISTS `positions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `positions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `description` mediumtext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `positions`
+--
+
+LOCK TABLES `positions` WRITE;
+/*!40000 ALTER TABLE `positions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `positions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `profiles`
 --
 
@@ -32,6 +56,7 @@ CREATE TABLE `profiles` (
   `zip` varchar(5) DEFAULT NULL,
   `picture` varchar(255) DEFAULT NULL,
   `id_users` int(11) NOT NULL,
+  `id_position` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_users_profiles` (`id_users`),
   CONSTRAINT `FK_users_profiles` FOREIGN KEY (`id_users`) REFERENCES `users` (`id`) ON DELETE CASCADE
@@ -44,7 +69,7 @@ CREATE TABLE `profiles` (
 
 LOCK TABLES `profiles` WRITE;
 /*!40000 ALTER TABLE `profiles` DISABLE KEYS */;
-INSERT INTO `profiles` VALUES (45,'Michole','C','Dumas','Beaumont','TX','77703','https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-1/c0.80.480.480/13319928_10209874459088239_8025087308433737911_n.jpg?oh=1bcd7d2040f1258e553017717b772d99&oe=57FC8D36',2),(51,'Mitchell','E','Jolivette','Houston','TX','77027','https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/13095777_10207391912530865_6875217497768056324_n.jpg?oh=888d8f5850082337998b23916ee91075&oe=57FD22C3',1),(92,'Steven',NULL,'Ross','Dallas','TX','77355','http://lorempixel.com/200/200/fashion',23),(93,'Evelyn',NULL,'Chavez','Beaumont','TX','77112','http://loremflickr.com/g/320/320/paris',24),(94,'Gregory',NULL,'Welch','Houston','TX','77826','http://loremflickr.com/g/320/320/dallas',25),(95,'Dorothy','J','Garza','El Paso','TX','77603','http://lorempixel.com/200/200/fashion',26),(96,'Gerald','W','Rodriguez','Austin','TX','77776','http://loremflickr.com/320/320/dog',27),(97,'Emily',NULL,'Howell','Beaumont','TX','77723','http://loremflickr.com/g/320/320/dallas',28),(98,'Cheryl',NULL,'Jones','El Paso','TX','77725','http://loremflickr.com/g/320/320/dallas',29),(99,'Jennifer',NULL,'Jacobs','El Paso','TX','77794','http://loremflickr.com/g/320/320/dallas',30),(100,'Thomas',NULL,'Vasquez','El Paso','TX','77338','http://loremflickr.com/g/320/320/paris',31),(101,'Denise','V','Gordon','El Paso','TX','77005','http://loremflickr.com/g/320/320/dallas',32),(102,'Steve',NULL,'Sanders','Austin','TX','77596','http://loremflickr.com/320/320/dog',33),(103,'Mark',NULL,'Shaw','El Paso','TX','77272','http://loremflickr.com/g/320/320/paris',34),(104,'Jesse',NULL,'Russell','Austin','TX','77754','http://loremflickr.com/g/320/320/paris',35),(105,'Peter',NULL,'Olson','El Paso','TX','77051','http://lorempixel.com/400/400/sports/',36),(106,'Joyce',NULL,'Sanchez','Houston','TX','77665','http://loremflickr.com/g/320/320/paris',37),(107,'Carolyn','M','Bennett','Beaumont','TX','77581','http://loremflickr.com/g/320/320/dallas',38),(108,'Dorothy','N','Reed','Houston','TX','77770','http://loremflickr.com/g/320/320/dallas',39),(109,'Kathy',NULL,'Kelly','El Paso','TX','77528','http://lorempixel.com/400/400/food',40),(110,'Juan','V','Williams','Beaumont','TX','77194','http://lorempixel.com/400/400/fashion',41),(111,'Steven','M','Lawrence','Dallas','TX','77995','http://lorempixel.com/400/400/people',42);
+INSERT INTO `profiles` VALUES (45,'Michole','C','Dumas','Beaumont','TX','77703','https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-1/c0.80.480.480/13319928_10209874459088239_8025087308433737911_n.jpg?oh=1bcd7d2040f1258e553017717b772d99&oe=57FC8D36',2,0),(51,'Mitchell','E','Jolivette','Houston','TX','77027','https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/13095777_10207391912530865_6875217497768056324_n.jpg?oh=888d8f5850082337998b23916ee91075&oe=57FD22C3',1,0),(92,'Steven',NULL,'Ross','Dallas','TX','77355','http://lorempixel.com/200/200/fashion',23,0),(93,'Evelyn',NULL,'Chavez','Beaumont','TX','77112','http://loremflickr.com/g/320/320/paris',24,0),(94,'Gregory',NULL,'Welch','Houston','TX','77826','http://loremflickr.com/g/320/320/dallas',25,0),(95,'Dorothy','J','Garza','El Paso','TX','77603','http://lorempixel.com/200/200/fashion',26,0),(96,'Gerald','W','Rodriguez','Austin','TX','77776','http://loremflickr.com/320/320/dog',27,0),(97,'Emily',NULL,'Howell','Beaumont','TX','77723','http://loremflickr.com/g/320/320/dallas',28,0),(98,'Cheryl',NULL,'Jones','El Paso','TX','77725','http://loremflickr.com/g/320/320/dallas',29,0),(99,'Jennifer',NULL,'Jacobs','El Paso','TX','77794','http://loremflickr.com/g/320/320/dallas',30,0),(100,'Thomas',NULL,'Vasquez','El Paso','TX','77338','http://loremflickr.com/g/320/320/paris',31,0),(101,'Denise','V','Gordon','El Paso','TX','77005','http://loremflickr.com/g/320/320/dallas',32,0),(102,'Steve',NULL,'Sanders','Austin','TX','77596','http://loremflickr.com/320/320/dog',33,0),(103,'Mark',NULL,'Shaw','El Paso','TX','77272','http://loremflickr.com/g/320/320/paris',34,0),(104,'Jesse',NULL,'Russell','Austin','TX','77754','http://loremflickr.com/g/320/320/paris',35,0),(105,'Peter',NULL,'Olson','El Paso','TX','77051','http://lorempixel.com/400/400/sports/',36,0),(106,'Joyce',NULL,'Sanchez','Houston','TX','77665','http://loremflickr.com/g/320/320/paris',37,0),(107,'Carolyn','M','Bennett','Beaumont','TX','77581','http://loremflickr.com/g/320/320/dallas',38,0),(108,'Dorothy','N','Reed','Houston','TX','77770','http://loremflickr.com/g/320/320/dallas',39,0),(109,'Kathy',NULL,'Kelly','El Paso','TX','77528','http://lorempixel.com/400/400/food',40,0),(110,'Juan','V','Williams','Beaumont','TX','77194','http://lorempixel.com/400/400/fashion',41,0),(111,'Steven','M','Lawrence','Dallas','TX','77995','http://lorempixel.com/400/400/people',42,0);
 /*!40000 ALTER TABLE `profiles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -84,4 +109,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-06-16  5:41:33
+-- Dump completed on 2016-06-16 21:26:58
