@@ -302,26 +302,23 @@ desired effect
         <!-- social-profile-widgets -->
         <div class="row">
         <?php 
-          foreach ($profiles as $key=>$profile) {
-            include $social_widgets.$profile['files']; 
+          
+          foreach ($profiles as $key=>$profile) { 
+            if ($key == 0 ) {
+              include $social_widgets.$profiles[0]['files'];
+            }
+            if ($key == 1) {
+              include $social_widgets.$profiles[1]['files'];
+            }
+            if ($key !=0 && $key !=1 && $key % 3==0) {
+              echo "</div>";
+              echo '<div class="row '.$key.'">';
+              include $social_widgets.$profile['files'];
+            }
+             if ($key !=0 && $key !=1 && $key % 3!=0) {
+                include $social_widgets.$profile['files'];
+             }
           }
-          // echo $html;
-          // foreach ($files as $key=>$file) {
-          //   if ($key == 0 ) {
-          //     include $social_widgets.$files[0];
-          //   }
-          //   if ($key == 1) {
-          //     include $social_widgets.$files[1];
-          //   }
-          //   if ($key !=0 && $key !=1 && $key % 3==0) {
-          //     echo "</div>";
-          //     echo '<div class="row '.$key.'">';
-          //     include $social_widgets.$file;
-          //   }
-          //    if ($key !=0 && $key !=1 && $key % 3!=0) {
-          //       include $social_widgets.$file;
-          //    }
-          // }
         ?>
         </div>  
         <!-- /.social-profile-widgets -->
@@ -338,7 +335,7 @@ desired effect
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2015 <a href="shoyanet.com">Shoyanet</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

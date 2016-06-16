@@ -32,7 +32,23 @@ class Admin extends CI_Controller {
 
 		$data['site_title'] = "Micho Micho";
 		$data['page_title'] = "Dashboard: Admin";
-		
+		$data['colors'] = array(
+			'red',
+			'green',
+			'yellow',
+			'blue',
+			'navy',
+			'teal',
+			'olive',
+			'lime',
+			'orange',
+			'fuchsia',
+			'purple',
+			'maroon',
+			'black',
+			'gray'
+			);
+
 		$this->load->view('admin/dashboard/dashboard',$data);
 	}
 
@@ -40,7 +56,7 @@ class Admin extends CI_Controller {
 		$widgets = array(
 				'social_developer.php',
 				'social_sales.php',
-				'social_sales_banner.php'
+				//'social_sales_banner.php'
 		);
 		return $widgets[rand(0,count($widgets)-1)];
 	}
