@@ -302,6 +302,9 @@ desired effect
         <!-- social-profile-widgets -->
         <div class="row">
         <?php 
+          foreach ($profiles as $key=>$profile) {
+            include $social_widgets.$profile['files']; 
+          }
           // echo $html;
           // foreach ($files as $key=>$file) {
           //   if ($key == 0 ) {

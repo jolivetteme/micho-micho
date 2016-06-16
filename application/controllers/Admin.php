@@ -17,9 +17,9 @@ class Admin extends CI_Controller {
 		foreach ($profiles as $key=>$user) {
 
 			$data['profiles'][$key]['username'] = $user->username;
-			$data['profiles'][$key]['firstname'] = $user->first_name;
-			$data['profiles'][$key]['lastname'] = $user->last_name;
-			$data['profiles'][$key]['profile_pic'] = $user->picture;
+			$data['profiles'][$key]['first_name'] = $user->first_name;
+			$data['profiles'][$key]['last_name'] = $user->last_name;
+			$data['profiles'][$key]['picture'] = $user->picture;
 			$data['profiles'][$key]['files'] = $this->randomize_widgets();
 
 		}
@@ -29,7 +29,7 @@ class Admin extends CI_Controller {
 	
 		$user = $this->users_model->getUser();
 		$data['user'] = $user;
-		
+
 		$data['site_title'] = "Micho Micho";
 		$data['page_title'] = "Dashboard: Admin";
 		

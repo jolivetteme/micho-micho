@@ -20,7 +20,6 @@ class Users_model extends CI_Model {
 	public function getById($id) {
 
 	}
-
 }
 
 /* End of file Users.php */
