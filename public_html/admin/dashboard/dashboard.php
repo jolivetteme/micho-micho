@@ -13,6 +13,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <?php $images = $admin_lte."dist/img/" ?>
   <?php $components = "admin/dashboard/components/" ?>
   <?php $social_widgets = $components."social_widgets/" ?>
+  <?php $shoyanet_dir = base_url()."assets/shoyanet/" ?>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,6 +34,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   -->
   <link rel="stylesheet" href="<?= $admin_lte ?>dist/css/skins/skin-blue.min.css">
 
+  <!-- Custom Shoyanet Stylesheets -->
+  <link rel="stylesheet" href="<?= $shoyanet_dir ?>/css/custom.css">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -62,7 +65,6 @@ desired effect
 -->
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
   <!-- Main Header -->
   <header class="main-header">
 
@@ -299,6 +301,7 @@ desired effect
     <section class="content">
 
       <!-- Your Page Content Here -->
+
         <!-- social-profile-widgets -->
         <div class="row">
         <?php 
@@ -336,7 +339,7 @@ desired effect
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2015 <a href="shoyanet.com">Shoyanet</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2015 <a href="http://shoyanet.com">Shoyanet</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->

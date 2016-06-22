@@ -9,7 +9,7 @@ class Users_model extends CI_Model {
 
 	public function getProfiles() {
 		$sql = <<<SQL
-		SELECT username, first_name, last_name, picture, id_position 
+		SELECT users.id as id, username, first_name, last_name, city, state, zip, picture, id_position 
 		FROM users 
 			INNER JOIN profiles 
 			ON (users.id=profiles.id_users)
@@ -34,15 +34,17 @@ SQL;
 
 	public function getPosition($id_position) {
 		$sql = <<<SQL
-		SELECT name FROM positions WHERE id = '$id_position'
+		SELECT name, description FROM positions WHERE id = '$id_position'
 SQL;
 		// echo $sql;die;
 		$query = $this->db->query($sql);
 		if ($query->num_rows()==0) {
-			return "No Position Assigned!";
+			@$row->name = "No position assigned!";
+			$row->description = "No description available becuase no positon has been assigned!";
+			return $row;
 		} else {
-			$row =  $query->row();
-			return $row->name;
+			$row=$query->row();
+			return $row;
 		}
 		
 

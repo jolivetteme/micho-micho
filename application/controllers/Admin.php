@@ -14,19 +14,23 @@ class Admin extends CI_Controller {
 		$data = array();
 
 		$profiles = $this->users_model->getProfiles();
+
 		foreach ($profiles as $key=>$user) {
 
+			$data['profiles'][$key]['id'] = $user->id;
 			$data['profiles'][$key]['username'] = $user->username;
 			$data['profiles'][$key]['id_position'] = $user->id_position;
 			$data['profiles'][$key]['first_name'] = $user->first_name;
 			$data['profiles'][$key]['last_name'] = $user->last_name;
+			$data['profiles'][$key]['city'] = $user->city;
+			$data['profiles'][$key]['state'] = $user->state;
+			$data['profiles'][$key]['zip'] = $user->zip;
 			$data['profiles'][$key]['picture'] = $user->picture;
 			$data['profiles'][$key]['files'] = $this->randomize_widgets();
 			
-			$data['profiles'][$key]['position']=$this->users_model->getPosition($user->id_position);
-			
-			
+			$data['profiles'][$key]['position']=$this->users_model->getPosition($user->id_position);	
 		}
+
 
 		$components = "admin/dashboard/components/";
 		$social_widgets = $components."social_widgets/";
