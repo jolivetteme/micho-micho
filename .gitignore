@@ -9,7 +9,7 @@
 !*/cache/.htaccess
 application/config/config.php
 application/config/database.php
-
+public_html/index.php
 
 ### SublimeText ###
 # cache files for sublime text
