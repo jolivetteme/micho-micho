@@ -5,7 +5,7 @@
   <?php $admin_lte = base_url()."assets/admin-lte/" ?>
   <?php $plugins = base_url()."assets/admin-lte/plugins/" ?>
   <?php $images = $admin_lte."dist/img/" ?>
-  <?php $components = "admin/dashboard/components/" ?>
+  <?php $components = "admn/dashboard/components/" ?>
   <?php $social_widgets = $components."social_widgets/" ?>
   <?php $shoyanet_dir = base_url()."assets/shoyanet/" ?>
 

@@ -55,4 +55,5 @@ $route['translate_uri_dashes'] = FALSE;
 /**
  * Admin Routes
  */
-$route['admin/login'] = 'login';
+// $route['admin/login'] = 'login';
+// $route['admin']='index.php/admin';

@@ -32,7 +32,7 @@ class Admin extends CI_Controller {
 		}
 
 
-		$components = "admin/dashboard/components/";
+		$components = "admn/dashboard/components/";
 		$social_widgets = $components."social_widgets/";
 	
 		$user = $this->users_model->getUser();
@@ -58,7 +58,29 @@ class Admin extends CI_Controller {
 			'gray'
 			);
 
-		$this->load->view('admin/dashboard/dashboard',$data);
+		$this->load->view('admn/dashboard/dashboard',$data);
+	}
+
+	public function view() {
+		
+		$item=$this->uri->segment(3);
+		
+	    switch ($item) {
+	    	case 'user':
+	    		echo "User's Page";
+	    		break;
+				case 'product':
+	    		echo "Product's Page";
+	    		break;
+	    	case 'project':
+	    		echo "Project's Page";
+	    		break;    	
+	    	default:
+	    		echo "Invalid point!";
+	    		break;
+	    }
+	    die;
+	    return $item;
 	}
 
 	public function randomize_widgets() {
