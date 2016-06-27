@@ -4,7 +4,7 @@ This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only.
 -->
 <html>
-<?php include 'components/layout/head-tag.php' ?>
+<?php include FCPATH.'admn/components/layout/head-tag.php' ?>
 <!--
 BODY TAG OPTIONS:
 =================
@@ -28,9 +28,9 @@ desired effect
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
   <!-- Main Header -->
-  <?php include 'components/layout/main-header.php' ?>
+  <?php include FCPATH.'admn/components/layout/main-header.php' ?>
   <!-- Left side column. contains the logo and sidebar -->
-  <?php include 'components/layout/main-sidebar.php' ?>
+  <?php include FCPATH.'admn/components/layout/main-sidebar.php' ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -83,10 +83,10 @@ desired effect
   <!-- /.content-wrapper -->
 
   <!-- Main Footer -->
-  <?php include 'components/layout/footer.php' ?>
+  <?php include FCPATH.'admn/components/layout/footer.php' ?>
 
   <!-- Control Sidebar -->
-  <?php include 'components/layout/control-sidebar.php' ?>
+  <?php include FCPATH.'admn/components/layout/control-sidebar.php' ?>
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
