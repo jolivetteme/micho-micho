@@ -13,6 +13,7 @@ class Users_model extends CI_Model {
 		FROM users 
 			INNER JOIN profiles 
 			ON (users.id=profiles.id_users)
+		ORDER BY last_name;
 SQL;
 		$query = $this->db->query($sql);
 		return $query->result();

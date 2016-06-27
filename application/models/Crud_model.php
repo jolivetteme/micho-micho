@@ -8,27 +8,36 @@ class Crud_model extends CI_Model {
 	}
 
 	public function create($table) {
-		$sql <<<SQL
-		INSERT INTO $table VALUES ()
-SQL;
-	}
-	public function read($table)   {
-		$sql <<<SQL
+		echo "<br />Time to create!<br />";
 
+		$username = 'testuser';
+		$password = 'password';
+
+		$data = array(
+			'username'=>$username,
+			'password'=>md5($password),
+		);
+
+		$sql = $this->db->set($data)->insert($table);
+		return true;
+}
+	public function read($table)   {
+		$sql = <<<SQL
+		SELECT * FROM $table;
 SQL;
 	}
 	public function update($table) {
-		$sql <<<SQL
-
+		$sql = <<<SQL
+		UPDATE $tabl SET ($field=$value);
+		WHERE id = $this->input->post($id);
 SQL;
 	}
 	public function delete($table) {
-		$sql <<<SQL
-
+		$sql = <<<SQL
+		DELETE FROM $table
+		WHERE id = $his->input->post($id);
 SQL;
 	}
-
-
-	
+}		
 /* End of file Crud.php */
 /* Location: ./application/models/Crud.php */

@@ -1,7 +1,8 @@
 <aside class="main-sidebar">
-  
+
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
+
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel">
       <div class="pull-left image">
@@ -28,13 +29,13 @@
 
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu">
-      <li class="header">Administrative</li>
+      <li class="header">Users</li>
       <!-- Optionally, you can add icons to the links -->
       <li class="treeview">
         <a href="#"><i class="fa fa-link"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
           <li><a href="#">View Users</a></li>
-          <li><a href="<?= base_url() ?>admin/user/create">Add New User</a></li>
+          <li><a href="<?= base_url() ?>admn/user/create/">Add User</a></li>
           <li><a href="#">Update User</a></li>
           <li><a href="#">Remove User</a></li>
         </ul>
@@ -56,7 +57,6 @@
         </ul>
       </li>
       <li class="treeview">
-        <li class="header">Communication</li>
         <a href="#"><i class="fa fa-link"></i> <span>Messages</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
           <li><a href="#">Compose Message</a></li>

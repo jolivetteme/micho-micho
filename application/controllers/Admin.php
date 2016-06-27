@@ -3,14 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends CI_Controller {
 
+
 	public function __construct() {
 		parent::__construct();
 		$this->load->model('users_model');
 	}
-	
+	public function getUser() {
+
+	}
 	public function index() {
 
-		
 		$data = array();
 
 		$profiles = $this->users_model->getProfiles();
@@ -38,7 +40,6 @@ class Admin extends CI_Controller {
 		$user = $this->users_model->getUser();
 		$data['user'] = $user;
 
-
 		$data['site_title'] = "Micho Micho";
 		$data['page_title'] = "Dashboard: Admin";
 		$data['colors'] = array(
@@ -61,13 +62,20 @@ class Admin extends CI_Controller {
 		$this->load->view('admn/dashboard/dashboard',$data);
 	}
 
-	public function view() {
-		
+	public function add() {
+
+		$this->load->model('crud_model');
 		$item=$this->uri->segment(3);
 		
 	    switch ($item) {
-	    	case 'user':
-	    		echo "User's Page";
+	    	case 'create':
+	    		$user = $this->users_model->getUser();
+					$data['user'] = $user;
+
+					$data['site_title'] = "Micho Home Micho";
+					$data['page_title'] = "Home Dashboard: Add Users";
+
+	    		$this->load->view('admn/user/add_user',$data);
 	    		break;
 				case 'product':
 	    		echo "Product's Page";
@@ -79,8 +87,6 @@ class Admin extends CI_Controller {
 	    		echo "Invalid point!";
 	    		break;
 	    }
-	    die;
-	    return $item;
 	}
 
 	public function randomize_widgets() {
