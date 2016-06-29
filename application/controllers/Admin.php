@@ -6,58 +6,17 @@ class Admin extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('users_model');
 	}
-	public function getUser() {
 
-	}
 	public function index() {
 
 		$data = array();
-
-		$profiles = $this->users_model->getProfiles();
-
-		foreach ($profiles as $key=>$user) {
-
-			$data['profiles'][$key]['id'] = $user->id;
-			$data['profiles'][$key]['username'] = $user->username;
-			$data['profiles'][$key]['id_position'] = $user->id_position;
-			$data['profiles'][$key]['first_name'] = $user->first_name;
-			$data['profiles'][$key]['last_name'] = $user->last_name;
-			$data['profiles'][$key]['city'] = $user->city;
-			$data['profiles'][$key]['state'] = $user->state;
-			$data['profiles'][$key]['zip'] = $user->zip;
-			$data['profiles'][$key]['picture'] = $user->picture;
-			$data['profiles'][$key]['files'] = $this->randomize_widgets();
-			
-			$data['profiles'][$key]['position']=$this->users_model->getPosition($user->id_position);	
-		}
-
-
-		$components = "admn/dashboard/components/";
-		$social_widgets = $components."social_widgets/";
-	
+		$this->load->model('users_model');
 		$user = $this->users_model->getUser();
 		$data['user'] = $user;
 
 		$data['site_title'] = "Micho Micho";
 		$data['page_title'] = "Dashboard: Admin";
-		$data['colors'] = array(
-			'red',
-			'green',
-			'yellow',
-			'blue',
-			'navy',
-			'teal',
-			'olive',
-			'lime',
-			'orange',
-			'fuchsia',
-			'purple',
-			'maroon',
-			'black',
-			'gray'
-			);
 
 		$this->load->view('admn/dashboard/dashboard',$data);
 	}
@@ -69,13 +28,23 @@ class Admin extends CI_Controller {
 		
 	    switch ($item) {
 	    	case 'create':
+					echo "<h1>I'm still working on this feature! Check back soon! <br></h1>";
+					echo "<a href=\"{$_SERVER['HTTP_REFERER']}\">Click here to go back where you came from!</a>";
+					DIE; 	    		
 	    		$user = $this->users_model->getUser();
 					$data['user'] = $user;
+					$data['site_title'] = "Micho Micho";
+					$data['page_title'] = "Dashboard: Add Users";
 
-					$data['site_title'] = "Micho Home Micho";
-					$data['page_title'] = "Home Dashboard: Add Users";
+					if (!empty($_POST)) {
+						//Insert Data
+						if ($this->crud_model->create('users')) {
+							$this->load->view('admn/user/add_profile',$data);
+						}
+					} else {
+	    			$this->load->view('admn/user/add_user',$data);
+					}
 
-	    		$this->load->view('admn/user/add_user',$data);
 	    		break;
 				case 'product':
 	    		echo "Product's Page";
@@ -87,14 +56,5 @@ class Admin extends CI_Controller {
 	    		echo "Invalid point!";
 	    		break;
 	    }
-	}
-
-	public function randomize_widgets() {
-		$widgets = array(
-				'social_developer.php',
-				'social_sales.php',
-				//'social_sales_banner.php'
-		);
-		return $widgets[rand(0,count($widgets)-1)];
 	}
 }

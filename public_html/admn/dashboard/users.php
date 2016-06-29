@@ -37,8 +37,8 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Our Employees
-        <small>What are they up to?</small>
+        Our Dashboard
+        <small>Let's get started. Here's your summary!</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -49,8 +49,34 @@ desired effect
 
     <!-- Main content -->
     <section class="content">
+
       <!-- Your Page Content Here -->
-      
+
+      <!-- social-profile-widgets -->
+      <div class="row">
+      <?php 
+        
+        foreach ($profiles as $key=>$profile) { 
+          if ($key == 0 ) {
+            include $social_widgets.$profiles[0]['files'];
+          }
+          if ($key == 1) {
+            include $social_widgets.$profiles[1]['files'];
+          }
+          if ($key !=0 && $key !=1 && $key % 3==0) {
+            echo "</div>";
+            echo '<div class="row '.$key.'">';
+            include $social_widgets.$profile['files'];
+          }
+           if ($key !=0 && $key !=1 && $key % 3!=0) {
+              include $social_widgets.$profile['files'];
+           }
+        }
+        
+      ?>
+      </div>  
+      <!-- /.social-profile-widgets -->
+
     </section>
     <!-- /.content -->
   </div>

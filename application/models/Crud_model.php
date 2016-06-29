@@ -8,18 +8,30 @@ class Crud_model extends CI_Model {
 	}
 
 	public function create($table) {
-		echo "<br />Time to create!<br />";
-
-		$username = 'testuser';
-		$password = 'password';
 
 		$data = array(
-			'username'=>$username,
-			'password'=>md5($password),
+			'username'=>$this->input->post('username'),
+			'password'=>sha1($this->input->post('pwd'))
 		);
 
-		$sql = $this->db->set($data)->insert($table);
-		return true;
+		$sql = <<<SQL
+		SELECT username FROM users WHERE username LIKE '{$data['username']}';
+SQL;
+		$result = $this->db->query($sql);
+		echo "<pre>";
+		print_r($this->input->post());
+		echo "</pre>";
+
+		if ($result->num_rows()>0) {//User already taken
+			$message = "Username {$data['username']} is already taken. Please choose another username.!";
+			echo $message;
+		} else {//Everything worked out
+			if ($this->db->set($data)->insert($table)) {
+				return true;
+			} else {//Error inserting data (MySQL INSERT ERROR)
+				return false;
+			}
+		}
 }
 	public function read($table)   {
 		$sql = <<<SQL
