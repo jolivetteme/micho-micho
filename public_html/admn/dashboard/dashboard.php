@@ -25,7 +25,19 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-blue sidebar-mini">
+<?php
+
+$color = array(
+  'blue'=>'skin-blue',
+  'black'=>'skin-black',
+  'purple'=>'skin-purple',
+  'yellow'=>'skin-yellow',
+  'red'=>'skin-red',
+  'green'=>'skin-green'
+);
+?>
+
+<body class="hold-transition skin-yellow sidebar-mini">
 <div class="wrapper">
   <!-- Main Header -->
   <?php include FCPATH.'admn/components/layout/main-header.php' ?>
@@ -50,7 +62,22 @@ desired effect
     <!-- Main content -->
     <section class="content">
       <!-- Your Page Content Here -->
-      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Minimal</label>
+            <select class="color-select form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+            <?php foreach($color as $key=>$value): ?>
+              <option data-theme="<?= $value ?>.css"><?= ucwords($key) ?></option>
+            <?php endforeach; ?>
+            </select>
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+        
+        <!-- /.col -->
+      </div>
     </section>
     <!-- /.content -->
   </div>
@@ -76,10 +103,20 @@ desired effect
 <script src="<?= $bootstrap_dir ?>js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= $admin_lte ?>dist/js/app.min.js"></script>
-
+<script src="<?= $plugins ?>select2/select2.full.min.js"></script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+<script>
+  $(function() {
+    theme_select = $("select.color-select").select2();
+    theme_select.change(function(){
+      // selected_option = $(this).add("option:selected").text();
+      theme_selected = $("select.color-select option:selected").text();
+      // stylesheet = $('#switchable-stylesheet').attr("href",<?php $admin_lte ?>"dist/css/skins/skin-"+theme_selected+".min.css");
+    });
+  });
+</script>
 </body>
 </html>

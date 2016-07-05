@@ -26,8 +26,9 @@
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect.
   -->
-  <link rel="stylesheet" href="<?= $admin_lte ?>dist/css/skins/skin-blue.min.css">
-
+  <link rel="stylesheet" id="switchable-stylesheet" href="<?= $admin_lte ?>dist/css/skins/skin-yellow.min.css">
+  <!-- Select2 Plugin -->
+  <link rel="stylesheet" href="<?= $plugins ?>select2/select2.min.css">
   <!-- Custom Shoyanet Stylesheets -->
   <link rel="stylesheet" href="<?= $shoyanet_dir ?>/css/custom.css">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
