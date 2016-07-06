@@ -25,9 +25,10 @@ SQL;
 		FROM users 
 			INNER JOIN profiles 
 			ON (users.id=profiles.id_users)
+		ORDER BY RAND() LIMIT 1;
 SQL;
 		$query = $this->db->query($sql);
-		return $query->row(12);
+		return $query->row();
 	}
 
 	public function getById($id) {
