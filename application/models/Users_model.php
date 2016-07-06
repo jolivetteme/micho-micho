@@ -27,7 +27,7 @@ SQL;
 			ON (users.id=profiles.id_users)
 SQL;
 		$query = $this->db->query($sql);
-		return $query->row();
+		return $query->row(12);
 	}
 
 	public function getById($id) {

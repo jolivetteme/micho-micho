@@ -65,7 +65,7 @@ $color = array(
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label>Minimal</label>
+            <label>Choose your theme color</label>
             <select class="color-select form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
             <?php foreach($color as $key=>$value): ?>
               <option data-theme="<?= $value ?>.css"><?= ucwords($key) ?></option>
@@ -110,11 +110,22 @@ $color = array(
      fixed layout. -->
 <script>
   $(function() {
+    
     theme_select = $("select.color-select").select2();
     theme_select.change(function(){
       // selected_option = $(this).add("option:selected").text();
-      theme_selected = $("select.color-select option:selected").text();
-      // stylesheet = $('#switchable-stylesheet').attr("href",<?php $admin_lte ?>"dist/css/skins/skin-"+theme_selected+".min.css");
+      theme_selected = $("select.color-select option:selected").text().toLowerCase();
+      // console.log(theme_selected);
+      stylesheet_url = "<?= $admin_lte ?>dist/css/skins/skin-" +theme_selected+ ".min.css";
+      // console.log(stylesheet_url);
+      
+      stylesheet = $('#switchable-stylesheet').attr("href","<?php echo $admin_lte ?>dist/css/skins/skin-"+ theme_selected + ".min.css");
+      //Remove body tag with skin-color and replace with stylesheet value
+      $('body').removeClass (function (index, css) {
+        return (css.match (/(^|\s)skin-\S+/g) || []).join('');
+      });
+
+      $('body').addClass("skin-"+theme_selected);
     });
   });
 </script>
