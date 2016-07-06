@@ -25,7 +25,7 @@ desired effect
 |               | sidebar-mini                            |
 |---------------------------------------------------------|
 -->
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-sidebar blue-mini">
 <div class="wrapper">
   <!-- Main Header -->
   <?php include FCPATH.'admn/components/layout/main-header.php' ?>
