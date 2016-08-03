@@ -53,7 +53,7 @@ class Users extends CI_Controller {
 			'gray'
 			);
 
-		$this->load->view('admn/dashboard/users',$data);
+		$this->load->view('admn/dashboard/users/users',$data);
 	}
 	/**
 	 * Add the new user
