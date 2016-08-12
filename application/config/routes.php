@@ -56,8 +56,10 @@ $route['translate_uri_dashes'] = FALSE;
  * Admin Routes
  */
 // $route['admin/login'] = 'login';
-$route['admin/user/create']='admin/add';
 $route['admin/users']='users/viewUsers';
+$route['admin/users/create']='users/createUsers';
+$route['admin/users/edit']='users/viewUsers';
+
 /**
  * Test Routes
  */

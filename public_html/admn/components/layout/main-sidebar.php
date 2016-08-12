@@ -34,8 +34,8 @@
       <li class="treeview">
         <a href="#"><i class="fa fa-link"></i> <span>Users</span> <i class="fa fa-angle-left pull-right"></i></a>
         <ul class="treeview-menu">
-          <li><a href="<?= base_url() ?>admin/users">View Users</a></li>
-          <li><a href="<?= base_url() ?>admin/user/create/">Add User</a></li>
+          <li><a href="<?= base_url() ?>admin/users/">View Users</a></li>
+          <li><a href="<?= base_url() ?>admin/users/create/">Add User</a></li>
           <li><a href="#">Update User</a></li>
           <li><a href="#">Remove User</a></li>
         </ul>

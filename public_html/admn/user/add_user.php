@@ -53,9 +53,9 @@ desired effect
         <div class="register-box-body">
           <p class="login-box-msg">Use the form below to create a new user.</p>
 
-          <form id="add_users" method="post">
+          <form id="add_users" method="post" >
             <div class="form-group has-feedback">
-              <input type="text" class="form-control" id="first_name" placeholder="First name">
+              <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First name">
               <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
@@ -78,7 +78,7 @@ desired effect
               <input type="password" class="form-control" id="repwd" placeholder="Retype password">
               <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
             </div>
-              <button class="btn btn-lg btn-success" type="submit" >Next <span class="fa fa-arrow-right"></span></button>
+              <button class="btn btn-lg btn-success" id="next-button" type="submit" >Next <span class="fa fa-arrow-right"></span></button>
           </form>
           <div class="row">
             <div id="result"></div>
@@ -112,18 +112,13 @@ desired effect
 <script src="<?= $admin_lte ?>dist/js/app.min.js"></script>
 
 <script>
+    var data = {"first_name":first_name};
 
-    $("button").click(function(){
-
+    $('#next-button').click(function(){
       var first_name = $('#first_name').val();
-      var last_name = $('#last_name').val();
-      var username = $('#username').val();
-      var pwd = $('#pwd').val();
-      data = {"first_name":first_name,"last_name":last_name,"username":username, "pwd":pwd}
-      // alert(data);
-      // alert(first_name);
-      $('.register-box-body').load('/admin/user/create/', data);
-      return false;
+      var data = {"first_name":first_name}
+      
+      alert(first_name);
     });
     
 </script>

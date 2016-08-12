@@ -18,7 +18,10 @@ SQL;
 		$query = $this->db->query($sql);
 		return $query->result();
 	}
-
+	/**
+	 * Get Logged in user
+	 * @return [type] [description]
+	 */
 	public function getUser() {
 		$sql = <<<SQL
 		SELECT username, first_name, last_name, picture 
@@ -48,8 +51,6 @@ SQL;
 			$row=$query->row();
 			return $row;
 		}
-		
-
 	}
 }
 

@@ -58,46 +58,29 @@ class Users extends CI_Controller {
 	/**
 	 * Add the new user
 	 */
-	public function createUsers() {
-
-		$this->load->model('crud_model');
-		$item=$this->uri->segment(3);
-		//Get the Logged in User (Faked for now)
+	public function createUsers() {	
+		//Get the Logged in User (Faked for now, takeing the first record returned)
 		$user = $this->users_model->getUser();
-		$data['user'] = $user;
-		$data['site_title'] = "Micho Micho";
-		$data['page_title'] = "Dashboard: Add Users";
 
-		if (!empty($_POST)) {//if the form is empty, just show the page
-			//Insert Data
-			if ($this->crud_model->create('users')) {//If data has been submitted, THEN save and then go to the Profile creation page.
-				$this->load->view('admn/user/add_profile',$data);
-			}					} else {
+		//Determine if the form was submitted, or if it's just to display the form
+		if ($this->input->server('REQUEST_METHOD')=='POST') {
+			echo "POST";
+			echo "<pre>";
+			print_r($this->input->post());
+			echo "</pre>";
+		} else {
+			//Set your data array for the view
+			$data['site_title'] = "Micho Micho";
+			$data['page_title'] = "Dashboard: Add Users";
+			$data['user']=$user;
+
 			$this->load->view('admn/user/add_user',$data);
 		}
 	}
 	/**
-	 * Add the new profile
+	 * display random social widgets
+	 * @return [type] [description]
 	 */
-	// public function createProfile() {
-
-	// 	$this->load->model('crud_model');
-	// 	// $item=$this->uri->segment(3);
-
-	// 	//Get the Logged in User (Faked for now)
-	// 	$user = $this->users_model->getUser();
-	// 	$data['user'] = $user;
-	// 	$data['site_title'] = "Micho Micho";
-	// 	$data['page_title'] = "Dashboard: Create a Profile";
-
-	// 	if (!empty($_POST)) {//if the form is empty, just show the page
-	// 		//Insert Data
-	// 		if ($this->crud_model->create('profiles')) {//We're all complete.
-	// 			return true;
-	// 	} else {
-	// 		$this->load->view('admn/user/add_profile',$data);
-	// 	}
-	// }
 	public function randomize_widgets() {
 		$widgets = array(
 				'social_developer.php',
@@ -107,6 +90,5 @@ class Users extends CI_Controller {
 		return $widgets[rand(0,count($widgets)-1)];
 	}
 }
-
 /* End of file Users.php */
 /* Location: ./application/controllers/Users.php */

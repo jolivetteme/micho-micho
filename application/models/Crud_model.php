@@ -8,13 +8,17 @@ class Crud_model extends CI_Model {
 	}
 
 	public function create($table) {
+		
+		echo "Welcome to create!";die;
+		try {
+			$this->db->insert($table, $data);
+		} catch (Exception $e) {
+			//Log some error
+			echo $e->getMessage();
+		}
 
-
-
-		$this->db->insert($table, $data);
-
-		$sql = <<<SQL	
-SQL;
+// 		$sql = <<<SQL	
+// SQL;
 		
 		/**
 		 * Code to check for a duplicate username
