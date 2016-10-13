@@ -53,14 +53,7 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 /**
- * Admin Routes
+ * Dashboard Routes
  */
-// $route['admin/login'] = 'login';
-$route['admin/users']='users/viewUsers';
-$route['admin/users/create']='users/createUsers';
-$route['admin/users/edit']='users/viewUsers';
-
-/**
- * Test Routes
- */
-$route['admin/test/add_profile'] = 'profiles/add';
+$route['login'] = 'login';
+// $route['dashboard']='dashboard';

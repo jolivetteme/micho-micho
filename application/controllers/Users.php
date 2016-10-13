@@ -2,11 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Users extends CI_Controller {
+	
 	public function __construct() {
+
 		parent::__construct();
 		$this->load->model('users_model');
 	}
-
 	public function viewUsers() {
 		$data = array();
 
@@ -64,10 +65,38 @@ class Users extends CI_Controller {
 
 		//Determine if the form was submitted, or if it's just to display the form
 		if ($this->input->server('REQUEST_METHOD')=='POST') {
-			echo "POST";
 			echo "<pre>";
 			print_r($this->input->post());
 			echo "</pre>";
+
+			$first_name = $this->input->post('first_name', TRUE);
+			$last_name = $this->input->post('last_name', TRUE);
+			$username = $this->input->post('username', TRUE);
+			$email = $this->input->post('email', TRUE);
+			$pwd = sha1($this->input->post('pwd', TRUE));
+			$repwd = sha1($this->input->post('repwd', TRUE));
+			
+			$data = array(
+				'first_name'=>$first_name,
+				'last_name'=>$last_name,
+				'username'=>$username,
+				'email'=>$email,
+				'pwd'=>$pwd
+			);
+
+			//password the same?
+			if ($pwd!==$repwd) {die("Passwords are not the same!");}
+			if (!$this->db->insert('users', $data)) {echo "Something went wrong with the insert!";}
+			die;
+			//Check if the email is in the users table
+			if($this->isDuplicate($email)) {
+				die("The email address is already in use!");
+			} 
+			//Check if the username is in the users table
+			if($this->isDuplicate($username)) {
+				die("The email address is already in use!");
+			} 
+			
 		} else {
 			//Set your data array for the view
 			$data['site_title'] = "Micho Micho";
@@ -89,6 +118,7 @@ class Users extends CI_Controller {
 		);
 		return $widgets[rand(0,count($widgets)-1)];
 	}
+	
 }
 /* End of file Users.php */
 /* Location: ./application/controllers/Users.php */
