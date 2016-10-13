@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Users_model extends CI_Model {
 
 	public function __construct() {
-		$this->load->database();
+		parent::__construct();
 	}
 
 	public function getProfiles() {
@@ -18,19 +18,37 @@ SQL;
 		$query = $this->db->query($sql);
 		return $query->result();
 	}
-
-	public function getUser() {
+	/**
+	 * Get Logged in user
+	 * @return [type] [description]
+	 */
+	public function setUser() {
 		$sql = <<<SQL
-		SELECT username, first_name, last_name, picture 
+		SELECT users.id as user_id, username, concat(first_name, " ",last_name) as name, picture 
 		FROM users 
 			INNER JOIN profiles 
 			ON (users.id=profiles.id_users)
 		ORDER BY RAND() LIMIT 1;
 SQL;
 		$query = $this->db->query($sql);
-		return $query->row();
+		$this->session->user= array(
+			'user_id'=>$query->row('user_id'),
+			'username'=>$query->row('username'),
+			'name'=>$query->row('name'),
+			'picture'=>$query->row('picture')
+		);
+
+		return true;
 	}
 
+	public function getUserSales() {
+		$sql = <<<SQL
+		SELECT sales.id, products.name, products.price  FROM sales INNER JOIN users ON sales.id_users=users.id INNER JOIN products ON sales.id_products=products.id where users.id={$this->user_id};
+SQL;
+		$query = $this->db->query($sql);
+		
+		return $query->row();		
+	}
 	public function getById($id) {
 	}
 
@@ -48,9 +66,8 @@ SQL;
 			$row=$query->row();
 			return $row;
 		}
-		
-
 	}
+
 }
 
 /* End of file Users.php */
