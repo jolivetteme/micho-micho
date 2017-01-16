@@ -1,0 +1,11 @@
+{
+	"folders":
+	[
+		{
+			"path": "/home/jolivetteme/Dropbox/jolivetteme/Projects/shoyanet.com/micho"
+		}
+	],
+    "settings": {
+    "xdebug": {"url":"http://asus-dev.micho.shoyanet.com/"}
+  }
+}
