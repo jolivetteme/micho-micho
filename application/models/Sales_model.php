@@ -7,7 +7,7 @@
 			parent::__construct();
 		}
 
-		public function getSales() {
+		public function getSalesCount() {
 			$sql = <<<SQL
 				SELECT count(*) AS count 
 					FROM sales 
@@ -16,6 +16,22 @@ SQL;
 
 			$query = $this->db->query($sql);
 			return $query->row();
+		}
+
+		public function getUserSales() {
+			$sql = <<<SQL
+				SELECT sales.id, name, price 
+					FROM products 
+					INNER JOIN  sales ON (sales.id_products=products.id)
+				WHERE id_users = {$this->session->user['user_id']};
+SQL;
+
+			$query = $this->db->query($sql);
+			return $query->result();
+		}
+
+		public function addSale() {
+			
 		}
 	
 	}

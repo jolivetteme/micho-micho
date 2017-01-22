@@ -123,6 +123,48 @@ $color = array(
               </div>
               <!-- ./col -->
             </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <!-- Standard button -->
+                <button type="button" class="btn btn-success">Add Sale</button>
+                <button type="button" class="btn btn-primary">Add Products</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <table class="table table-hover table-responsive">
+                  <thead>
+                    <tr>
+                      <th>Sales ID</th>
+                      <th>Name</th>
+                      <th>Price</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php foreach ($sales_detail as $sale):?>
+                    <tr>
+                      <td><?=$sale->id?></td>
+                      <td><?=$sale->name?></td>
+                      <td><?=$sale->price?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <td><strong>Total:</strong></td>
+                      <td></td>
+                      <td ><strong><?= $sales_sum; ?></strong></td>
+                    </tr>
+                  </tfoot>
+                </table>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <!-- Standard button -->
+                    <button type="button" class="btn btn-success btn-block">Checkout</button>
+                  </div>
+                </div>
+              </div>
+            </div>
     </section>
     <!-- /.content -->
   </div>
@@ -155,7 +197,7 @@ $color = array(
      fixed layout. -->
 <script>
   $(function() {
-    
+
     theme_select = $("select.color-select").select2();
     theme_select.change(function(){
       // selected_option = $(this).add("option:selected").text();
